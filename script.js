@@ -1,12 +1,15 @@
 //You can edit ALL of the code here
+import {episodCard,navpart} from "./episodCard.js"
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
 }
 
 function makePageForEpisodes(episodeList) {
-  const rootElem = document.getElementById("root");
-  rootElem.textContent = `Got ${episodeList.length} episode(s)`;
+  // nav section
+  navpart(episodeList);
+  // display episodCard
+  episodCard(episodeList);
 }
 
 window.onload = setup;
