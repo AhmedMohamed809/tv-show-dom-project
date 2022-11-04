@@ -1,5 +1,5 @@
 //You can edit ALL of the code here
-import {episodCard,navpart} from "./DisplayCard/episodCard.js"
+import {episodCard,navpart} from "./episodCard.js"
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
