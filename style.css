@@ -1,15 +1,34 @@
+.nav{
+  display: flex;
+  justify-content:safe;
+  background-color: aliceblue;
 
+}
+.allSearchnone{
+  display: none;
+}
+#display{
+  margin-left: 30px;
+}
+#inputSearch{
+  margin-left: 30px;
+}
+#selectePisodes{
+  height: 40px;
+}
 #root {
-  background-color: rgb(248, 246, 246);
+  padding-top: 10px;
+  /* background-color: rgb(250, 250, 250); */
   display: grid;
   gap:12px;
   grid-template-columns: auto auto auto;
 }
 #contenar{
-  background-color: rgb(243, 250, 255);
+  background-color: rgb(250, 250, 250);
 padding: 50px;
   border: 1px black solid;
   width: 300px;
+  font-style:oblique;
 }
 #header-episode{
   text-align: center;
@@ -18,4 +37,7 @@ padding: 50px;
   width: 230px;
   height: 50px;
   border-radius:8px;
+font-size: 18px;
+font-style: normal;
+font-weight: bold;
 }
