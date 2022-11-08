@@ -1,8 +1,10 @@
 //You can edit ALL of the code here
-import {episodCard,navpart} from "./episodCard.js"
+import { episodCard, navpart } from "./episodCard.js";
 function setup() {
-  const allEpisodes = getAllEpisodes();
-  makePageForEpisodes(allEpisodes);
+  const getDataFromApi = fetch("https://api.tvmaze.com/shows/179/episodes")
+    .then((resp) => resp.json())
+    .then((data) => makePageForEpisodes(data))
+    .catch((error) => console.log(error));
 }
 
 function makePageForEpisodes(episodeList) {
