@@ -1,6 +1,7 @@
 .nav{
   display: flex;
-  justify-content:safe;
+  justify-content:space-between;
+
   background-color: aliceblue;
 
 }
@@ -22,13 +23,15 @@
   display: grid;
   gap:12px;
   grid-template-columns: auto auto auto;
+
 }
 #contenar{
-  background-color: rgb(250, 250, 250);
+background-color: rgb(250, 250, 250);
 padding: 50px;
   border: 1px black solid;
   width: 300px;
   font-style:oblique;
+  border-radius: 25px;
 }
 #header-episode{
   text-align: center;
