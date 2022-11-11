@@ -1,4 +1,6 @@
 // Display all episodCard
+import { getData } from "./getData.js";
+
 export function episodCard(episodes, search = "") {
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
@@ -7,7 +9,8 @@ export function episodCard(episodes, search = "") {
     const pHeader = document.createElement("p");
     const img = document.createElement("img");
     const pSum = document.createElement("p");
-    img.src = episodes[i].image.medium; // display medium Img
+
+    img.src = episodes[i].image ? episodes[i].image.medium : "";
     pHeader.innerText = `${episodes[i].name} - S01E0${i + 1} `; // display heder and number of episod
     pHeader.id = "header-episode";
     dive.id = "contenar";
@@ -31,10 +34,13 @@ export function navpart(episodeList) {
   const display = document.createElement("p");
   const contenar = document.querySelector("#contenar");
   search.id = "inputSearch";
+  search.placeholder = "  Search Shows and people";
+  search.type = "text";
+  search.size = 50;
   display.id = "display";
   let displayNumber = 0;
   console.log(displayNumber);
-  
+
   //search section
   search.addEventListener("input", (ev) => {
     episodCard(episodeList, search.value);
@@ -54,4 +60,12 @@ export function navpart(episodeList) {
     nav.appendChild(search);
     nav.appendChild(display);
   }
+  //Show Selector
+  const Showselector = document.getElementById("showSelector");
+  Showselector.addEventListener("change", (e) => {
+    let value = e.target.value;
+    console.log(value);
+    let url = `https://api.tvmaze.com/shows/${value}/episodes`;
+    getData(url, episodCard);
+  });
 }
