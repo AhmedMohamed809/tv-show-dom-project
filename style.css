@@ -7,26 +7,23 @@
 
 
 }
+
 body{
   background-color: var(--secound-color);
 }
-.allSearchnone{
-  display: none;
-}
+
 #display{
   margin-left: 30px;
+  color: white;
 }
 #inputSearch{
-  color:wheat;
-  margin-left: 30px;
+  color:black;
+  margin-left: 20px;
   border-radius: 25px;
   border: solid 1px rgb(141, 141, 141);
+height: 40px;
 }
 
-#selectePisodes{
-  height: 40px;
-  color:var(--secound-color)
-}
 
 #root {
   padding-top: 10px;
@@ -34,7 +31,7 @@ body{
   display: grid;
   gap:12px;
   grid-template-columns: auto auto auto;
-
+  
 }
 #contenar{
 background-color:var(--first-Color);
@@ -56,3 +53,12 @@ font-size: 18px;
 font-style: normal;
 font-weight: bold;
 }
+
+#showSelector{
+  height: 40px;
+}
+  #selectePisodes{
+    height: 40px;
+    color:var(--secound-color);
+    margin-left: 20px;
+  }

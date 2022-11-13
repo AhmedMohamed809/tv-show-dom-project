@@ -53,7 +53,7 @@ function getOneShow() {
   };
 }
 
-function getAllShows() {
+export function getAllShows() {
   return [
     {
       "id": 1632,

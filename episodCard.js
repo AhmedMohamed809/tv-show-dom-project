@@ -1,7 +1,9 @@
-// Display all episodCard
 import { getData } from "./getData.js";
-
-export function episodCard(episodes, search = "") {
+import { getAllShows } from "./shows.js";
+let SearchBox = document.getElementById("inputSearch");
+// Display all episodCard
+export function episodCard(episodes) {
+  navpart(episodes);
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
   for (let i = 0; i < episodes.length; i++) {
@@ -9,63 +11,70 @@ export function episodCard(episodes, search = "") {
     const pHeader = document.createElement("p");
     const img = document.createElement("img");
     const pSum = document.createElement("p");
-
     img.src = episodes[i].image ? episodes[i].image.medium : "";
     pHeader.innerText = `${episodes[i].name} - S01E0${i + 1} `; // display heder and number of episod
     pHeader.id = "header-episode";
     dive.id = "contenar";
-    dive.className = `allSearch${
-      episodes[i].name.includes(search) || episodes[i].summary.includes(search)
-        ? "allEpisdes"
-        : "none"
-    }`;
     pSum.innerHTML = episodes[i].summary;
-    rootElem.appendChild(dive);
     dive.appendChild(pHeader);
     dive.appendChild(img);
     dive.appendChild(pSum);
+    rootElem.appendChild(dive);
   }
+  let allCards = [...document.querySelectorAll("#contenar")];
+  searhResult(allCards);
 }
-
-// Nav bar section
+const display = document.createElement("p");
+const nav = document.querySelector(".nav");
+//display Nav
 export function navpart(episodeList) {
-  const nav = document.querySelector(".nav");
-  const search = document.createElement("input");
-  const display = document.createElement("p");
-  const contenar = document.querySelector("#contenar");
-  search.id = "inputSearch";
-  search.placeholder = "  Search Shows and people";
-  search.type = "text";
-  search.size = 50;
-  display.id = "display";
-  let displayNumber = 0;
-  console.log(displayNumber);
+  const allShows = getAllShows();
 
-  //search section
-  search.addEventListener("input", (ev) => {
-    episodCard(episodeList, search.value);
-    let displySearch = document.getElementsByClassName(
-      "allSearchallEpisdes"
-    ).length;
-    console.log(displySearch);
-    display.innerText = `Display ${displySearch}/${episodeList.length} episode `;
-  });
-
-  //select section
+  const select = document.getElementById("selectePisodes");
+  select.innerText = "";
   for (let i = 0; i < episodeList.length; i++) {
-    const select = document.getElementById("selectePisodes");
     const option = document.createElement("option");
     option.innerText = `S01E0${i + 1} - ${episodeList[i].name}`;
     select.appendChild(option);
-    nav.appendChild(search);
-    nav.appendChild(display);
   }
+  display.innerText = `Display 0 /${episodeList.length} episode `;
+  nav.appendChild(display);
   //Show Selector
   const Showselector = document.getElementById("showSelector");
+  showList(allShows, Showselector);
   Showselector.addEventListener("change", (e) => {
     let value = e.target.value;
     console.log(value);
     let url = `https://api.tvmaze.com/shows/${value}/episodes`;
     getData(url, episodCard);
+  });
+}
+
+//search Function
+function searhResult(allCards) {
+  display.id = "display";
+  SearchBox.addEventListener("input", (ev) => {
+    let searchValue = ev.target.value.toLowerCase();
+    allCards.forEach((item) => {
+      if (item.innerText.toLowerCase().includes(searchValue)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+    let filterEpisodes = allCards.filter(
+      (item) => item.style.display == "block"
+    );
+    console.log(filterEpisodes.length);
+    display.innerText = `Display ${filterEpisodes.length}/${allCards.length} episode `;
+  });
+}
+//display ShowAllList
+function showList(allShow, showSelector) {
+  allShow.forEach((element) => {
+    let optionShow = document.createElement("option");
+    optionShow.text = element.name;
+    optionShow.value = element.id;
+    showSelector.appendChild(optionShow);
   });
 }

@@ -7,8 +7,6 @@ function setup() {
 }
 
 function makePageForEpisodes(episodeList) {
-  // nav section
-  navpart(episodeList);
   // display episodCard
   episodCard(episodeList);
 }
