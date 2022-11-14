@@ -1,34 +1,46 @@
+:root {
+  --first-Color:#868686;
+  --secound-color:#171717;
+}
 .nav{
   display: flex;
-  justify-content:safe;
-  background-color: aliceblue;
+
 
 }
-.allSearchnone{
-  display: none;
+
+body{
+  background-color: var(--secound-color);
 }
+
 #display{
   margin-left: 30px;
+  color: white;
 }
 #inputSearch{
-  margin-left: 30px;
+  color:black;
+  margin-left: 20px;
+  border-radius: 25px;
+  border: solid 1px rgb(141, 141, 141);
+height: 40px;
 }
-#selectePisodes{
-  height: 40px;
-}
+
+
 #root {
   padding-top: 10px;
   /* background-color: rgb(250, 250, 250); */
   display: grid;
   gap:12px;
   grid-template-columns: auto auto auto;
+  
 }
 #contenar{
-  background-color: rgb(250, 250, 250);
+background-color:var(--first-Color);
+color: rgb(0, 0, 0);
 padding: 50px;
   border: 1px black solid;
   width: 300px;
   font-style:oblique;
+  border-radius: 25px;
 }
 #header-episode{
   text-align: center;
@@ -41,3 +53,12 @@ font-size: 18px;
 font-style: normal;
 font-weight: bold;
 }
+
+#showSelector{
+  height: 40px;
+}
+  #selectePisodes{
+    height: 40px;
+    color:var(--secound-color);
+    margin-left: 20px;
+  }

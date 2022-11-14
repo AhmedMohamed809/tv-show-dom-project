@@ -11,18 +11,20 @@
 
 <body>
   <header class="nav">
+    <select id="showSelector">
+    </select>
     <select id="selectePisodes"></select>
-    <section id="search"></section>
+    <section id="search">
+      <input id="inputSearch" placeholder="Search Shows and people" type="text" />
+    </section>
   </header>
   <main id="root">
-
   </main>
   <footer>
     <h1>This is Footer</h1>
   </footer>
   <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
   <script src="episodes.js"></script>
-
   <!-- Loads YOUR javascript code -->
   <script src="script.js" type="module"></script>
 </body>
