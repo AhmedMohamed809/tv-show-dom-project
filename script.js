@@ -9,6 +9,7 @@ function setup() {
 function makePageForEpisodes(episodeList) {
   // display episodCard
   episodCard(episodeList);
+  navpart(episodeList);
 }
 
 window.onload = setup;

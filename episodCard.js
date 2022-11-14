@@ -12,7 +12,7 @@ export function episodCard(episodes) {
     const img = document.createElement("img");
     const pSum = document.createElement("p");
     img.src = episodes[i].image ? episodes[i].image.medium : "";
-    pHeader.innerText = `${episodes[i].name} - S01E0${i + 1} `; // display heder and number of episod
+    pHeader.innerText = `${episodes[i].name} - S01E0${i + 1}  `; // display heder and number of episod
     pHeader.id = "header-episode";
     dive.id = "contenar";
     pSum.innerHTML = episodes[i].summary;
@@ -23,18 +23,24 @@ export function episodCard(episodes) {
   }
   let allCards = [...document.querySelectorAll("#contenar")];
   searhResult(allCards);
+  //select episode
+  selectepisodelist(allCards);
 }
 const display = document.createElement("p");
 const nav = document.querySelector(".nav");
 //display Nav
 export function navpart(episodeList) {
   const allShows = getAllShows();
-
+  const listOfHeder = [...document.querySelectorAll("#header-episode")];
   const select = document.getElementById("selectePisodes");
-  select.innerText = "";
-  for (let i = 0; i < episodeList.length; i++) {
+
+  // select.innerText = "";
+  for (let i = 0; i < listOfHeder.length; i++) {
     const option = document.createElement("option");
-    option.innerText = `S01E0${i + 1} - ${episodeList[i].name}`;
+    // option.innerText = `${episodeList[i].name} - S01E0${i + 1}`;
+    option.innerText = listOfHeder[i].innerText;
+    // option.value = listOfHeder[i].innerText;
+    option.value = i;
     select.appendChild(option);
   }
   display.innerText = `Display 0 /${episodeList.length} episode `;
@@ -44,12 +50,32 @@ export function navpart(episodeList) {
   showList(allShows, Showselector);
   Showselector.addEventListener("change", (e) => {
     let value = e.target.value;
-    console.log(value);
     let url = `https://api.tvmaze.com/shows/${value}/episodes`;
     getData(url, episodCard);
   });
 }
-
+//select episode
+function selectepisodelist(allCards) {
+  const select = document.getElementById("selectePisodes");
+  console.log(select);
+  select.addEventListener("change", (ev) => {
+    let val = ev.target.value;
+    console.log(typeof val);
+    allCards.forEach((item, index) => {
+      console.log(item);
+      // if (item.innerText.includes(val)) {
+      //   item.style.display = "block";
+      // } else {
+      //   item.style.display = "none";
+      // }
+      if (index === val * 1) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+}
 //search Function
 function searhResult(allCards) {
   display.id = "display";
@@ -65,7 +91,6 @@ function searhResult(allCards) {
     let filterEpisodes = allCards.filter(
       (item) => item.style.display == "block"
     );
-    console.log(filterEpisodes.length);
     display.innerText = `Display ${filterEpisodes.length}/${allCards.length} episode `;
   });
 }
