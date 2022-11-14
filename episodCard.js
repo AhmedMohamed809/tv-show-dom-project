@@ -34,12 +34,11 @@ export function navpart(episodeList) {
   const listOfHeder = [...document.querySelectorAll("#header-episode")];
   const select = document.getElementById("selectePisodes");
 
-  // select.innerText = "";
+  select.innerText = "";
   for (let i = 0; i < listOfHeder.length; i++) {
     const option = document.createElement("option");
-    // option.innerText = `${episodeList[i].name} - S01E0${i + 1}`;
+
     option.innerText = listOfHeder[i].innerText;
-    // option.value = listOfHeder[i].innerText;
     option.value = i;
     select.appendChild(option);
   }
@@ -62,12 +61,6 @@ function selectepisodelist(allCards) {
     let val = ev.target.value;
     console.log(typeof val);
     allCards.forEach((item, index) => {
-      console.log(item);
-      // if (item.innerText.includes(val)) {
-      //   item.style.display = "block";
-      // } else {
-      //   item.style.display = "none";
-      // }
       if (index === val * 1) {
         item.style.display = "block";
       } else {
