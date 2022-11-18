@@ -9,7 +9,7 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 
-<body>
+<body id="body">
   <header class="nav">
     <select id="showSelector">
     </select>
@@ -18,10 +18,11 @@
       <input id="inputSearch" placeholder="Search Shows and people" type="text" />
     </section>
   </header>
+  <section id="bodyOfShow"></section>
   <main id="root">
   </main>
   <footer>
-    <h1>This is Footer</h1>
+    <h1>All The Data Come From <span>TVMaze.com</span> </h1>
   </footer>
   <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
   <script src="episodes.js"></script>

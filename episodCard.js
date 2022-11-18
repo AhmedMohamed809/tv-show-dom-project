@@ -33,7 +33,13 @@ export function navpart(episodeList) {
   const allShows = getAllShows();
   const listOfHeder = [...document.querySelectorAll("#header-episode")];
   const select = document.getElementById("selectePisodes");
+  // const homeButton = document.createElement("button");
+  // homeButton.innerText = "Home Page";
+  // homeButton.addEventListener("click", (e) => {
 
+  //   console.log("HIIIIIIIIIII");
+  // });
+  // nav.appendChild(homeButton);
   select.innerText = "";
   for (let i = 0; i < listOfHeder.length; i++) {
     const option = document.createElement("option");
@@ -56,10 +62,8 @@ export function navpart(episodeList) {
 //select episode
 function selectepisodelist(allCards) {
   const select = document.getElementById("selectePisodes");
-  console.log(select);
   select.addEventListener("change", (ev) => {
     let val = ev.target.value;
-    console.log(typeof val);
     allCards.forEach((item, index) => {
       if (index === val * 1) {
         item.style.display = "block";

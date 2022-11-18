@@ -2,19 +2,28 @@
   --first-Color:#868686;
   --secound-color:#171717;
 }
+span{
+  color: green;
+}
 .nav{
-  display: flex;
 
+
+ border: 2px solid white;
 
 }
 
 body{
   background-color: var(--secound-color);
+    font-family: sans-serif;
 }
 
 #display{
   margin-left: 30px;
   color: white;
+}
+#search{
+border: 2px solid black;
+width: 300px;
 }
 #inputSearch{
   color:black;
@@ -61,4 +70,32 @@ font-weight: bold;
     height: 40px;
     color:var(--secound-color);
     margin-left: 20px;
+  }
+
+  .contenerOfShow{
+    padding-top: 10px;
+      display: flex;
+    cursor: pointer;
+     
+    background-color: var(--first-Color);
+      color: rgb(0, 0, 0);
+      padding: 50px;
+      border: 1px black solid;
+     
+     
+      border-radius: 25px;
+  }
+  #divOfreat{
+        border: 3px solid rgb(222, 222, 222);
+margin: 5px;
+width: 200px;
+  }
+  #statusOfShow{
+    border: 2px solid rgb(7, 7, 7);
+    background-color: green;
+  }
+  #nameOfShow{
+   margin: 50px;
+    width: 100px;
+    
   }
